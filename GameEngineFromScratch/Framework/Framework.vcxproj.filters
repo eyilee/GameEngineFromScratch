@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{66f6265e-29a2-4b7d-9fad-0c357345ed9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{a4f3fa29-8c90-4416-b446-cdae72bd3a2e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\main.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\BaseApplication.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Allocator.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\GraphicsManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\MemoryManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Interface\IRuntimeModule.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\IApplication.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\BaseApplication.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Allocator.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\GfxConfiguration.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\GraphicsManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\MemoryManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
