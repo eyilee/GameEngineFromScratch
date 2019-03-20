@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstddef>
 #include <cstdint>
 
@@ -73,5 +75,5 @@ namespace Engine {
 		Allocator(const Allocator& clone) {}
 		Allocator& operator = (const Allocator &rhs) {}
 	};
-}
 
+}

@@ -1,8 +1,10 @@
 #pragma once
+
 #include "GfxConfiguration.h"
-#include "../Interface/IApplication.h"
+#include "Framework/Interface/IApplication.h"
 
 namespace Engine {
+
 	class BaseApplication : public IApplication
 	{
 	protected:
@@ -19,8 +21,14 @@ namespace Engine {
 		virtual void Tick();
 		virtual bool IsQuit();
 
+		inline GfxConfiguration& GetConfiguration() { return m_Config; };
+
+	protected:
+		virtual void OnDraw() {};
+
 	private:
 		// hide the default construct to enforce a configuration
 		BaseApplication() {};
 	};
+
 }

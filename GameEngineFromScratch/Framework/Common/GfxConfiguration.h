@@ -1,9 +1,11 @@
 #pragma once
+
 #include <cstdint>
-#include <iostream>
 #include <cwchar>
+#include <iostream>
 
 namespace Engine {
+
 	struct GfxConfiguration {
 		/// Inline all-elements constructor.
 		/// \param[in] r the red color depth in bits
@@ -52,5 +54,5 @@ namespace Engine {
 			return out;
 		}
 	};
-}
 
+}

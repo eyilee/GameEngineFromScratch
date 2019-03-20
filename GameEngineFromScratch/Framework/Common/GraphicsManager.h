@@ -1,7 +1,9 @@
 #pragma once
-#include "../Interface/IRuntimeModule.h"
+
+#include "Framework/Interface/IRuntimeModule.h"
 
 namespace Engine {
+
 	class GraphicsManager : public IRuntimeModule
 	{
 	public:
@@ -10,5 +12,5 @@ namespace Engine {
 		virtual void Finalize();
 		virtual void Tick();
 	};
-}
 
+}

@@ -1,5 +1,5 @@
-#include "BaseApplication.h"
 #include <iostream>
+#include "BaseApplication.h"
 
 bool Engine::BaseApplication::m_bQuit = false;
 
@@ -11,8 +11,11 @@ Engine::BaseApplication::BaseApplication(GfxConfiguration& cfg)
 // Parse command line, read configuration, initialize all sub modules
 int Engine::BaseApplication::Initialize()
 {
+	int result = 0;
+
 	std::cout << m_Config;
-	return 0;
+
+	return result;
 }
 
 // Finalize all sub modules and clean up all runtime temporary files.

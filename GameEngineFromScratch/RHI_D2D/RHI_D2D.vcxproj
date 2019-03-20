@@ -19,35 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Codec\BmpParser.cpp" />
-    <ClCompile Include="Common\Allocator.cpp" />
-    <ClCompile Include="Common\AssetLoader.cpp" />
-    <ClCompile Include="Common\BaseApplication.cpp" />
-    <ClCompile Include="Common\Buffer.cpp" />
-    <ClCompile Include="Common\GraphicsManager.cpp" />
-    <ClCompile Include="Common\main.cpp" />
-    <ClCompile Include="Common\MemoryManager.cpp" />
+    <ClCompile Include="D2DGraphicsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Codec\BmpParser.h" />
-    <ClInclude Include="Common\Allocator.h" />
-    <ClInclude Include="Common\AssetLoader.h" />
-    <ClInclude Include="Common\BaseApplication.h" />
-    <ClInclude Include="Common\Buffer.h" />
-    <ClInclude Include="Common\GfxConfiguration.h" />
-    <ClInclude Include="Common\GraphicsManager.h" />
-    <ClInclude Include="Common\Image.h" />
-    <ClInclude Include="Common\MemoryManager.h" />
-    <ClInclude Include="Common\utility.h" />
-    <ClInclude Include="Interface\IApplication.h" />
-    <ClInclude Include="Interface\IImageParser.h" />
-    <ClInclude Include="Interface\IRuntimeModule.h" />
+    <ClInclude Include="D2DGraphicsManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CBE95678-4728-464A-8521-75AA1B975800}</ProjectGuid>
+    <ProjectGuid>{7037D828-35E7-4F08-AA85-0B56D450EC6C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Framework</RootNamespace>
+    <RootNamespace>RHID2D</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -121,10 +102,14 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>d2d1.lib;Framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>

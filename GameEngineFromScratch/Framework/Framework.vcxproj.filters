@@ -7,6 +7,9 @@
     <Filter Include="Interface">
       <UniqueIdentifier>{a4f3fa29-8c90-4416-b446-cdae72bd3a2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Codec">
+      <UniqueIdentifier>{93da8d9b-11d1-49ac-b784-fada6ee80fb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\main.cpp">
@@ -23,6 +26,15 @@
     </ClCompile>
     <ClCompile Include="Common\MemoryManager.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AssetLoader.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Buffer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Codec\BmpParser.cpp">
+      <Filter>Codec</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +57,24 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="Common\MemoryManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AssetLoader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Buffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Image.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\IImageParser.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Codec\BmpParser.h">
+      <Filter>Codec</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\utility.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>

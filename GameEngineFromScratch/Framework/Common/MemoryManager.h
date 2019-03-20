@@ -1,9 +1,11 @@
 #pragma once
-#include "Allocator.h"
-#include "../Interface/IRuntimeModule.h"
+
 #include <new>
+#include "Allocator.h"
+#include "Framework/Interface/IRuntimeModule.h"
 
 namespace Engine {
+
 	class MemoryManager : public IRuntimeModule
 	{
 	private:
@@ -16,6 +18,7 @@ namespace Engine {
 		virtual void Finalize();
 		virtual void Tick();
 		void* Allocate(size_t size);
+		void* Allocate(size_t size, size_t alignment);
 		void Free(void* p, size_t size);
 
 	public:
@@ -35,5 +38,5 @@ namespace Engine {
 	private:
 		static Allocator* LookUpAllocator(size_t size);
 	};
-}
 
+}

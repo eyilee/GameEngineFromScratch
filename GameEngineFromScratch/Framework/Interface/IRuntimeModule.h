@@ -1,6 +1,7 @@
 #pragma once
 
 namespace Engine {
+
 	class IRuntimeModule
 	{
 public:
@@ -9,4 +10,5 @@ public:
 		virtual void Finalize() = 0;
 		virtual void Tick() = 0;
 	};
+
 }

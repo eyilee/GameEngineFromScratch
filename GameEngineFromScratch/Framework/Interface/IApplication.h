@@ -1,7 +1,9 @@
 #pragma once
+
 #include "IRuntimeModule.h"
 
 namespace Engine {
+
 	class IApplication : public IRuntimeModule
 	{
 	public:
@@ -12,4 +14,5 @@ namespace Engine {
 		virtual void Tick() = 0;
 		virtual bool IsQuit() = 0;
 	};
+
 }

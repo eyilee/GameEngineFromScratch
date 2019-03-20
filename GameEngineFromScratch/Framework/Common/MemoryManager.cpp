@@ -1,9 +1,14 @@
+#include <cstdlib>
 #include "MemoryManager.h"
-#include <malloc.h>
 
 using namespace Engine;
 
+#ifndef ALIGN
+#define ALIGN(x, a) (((x) + ((a) - 1)) & ~((a) - 1))
+#endif
+
 namespace Engine {
+
 	static const uint32_t kBlockSizes[] = {
 		// 4-increments
 		4,  8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48,
@@ -25,6 +30,9 @@ namespace Engine {
 
 	// largest valid block size
 	static const uint32_t kMaxBlockSize = kBlockSizes[kNumBlockSizes - 1];
+
+	size_t* MemoryManager::m_pBlockSizeLookup;
+	Allocator* MemoryManager::m_pAllocators;
 }
 
 int Engine::MemoryManager::Initialize()
@@ -83,6 +91,21 @@ void* Engine::MemoryManager::Allocate(size_t size)
 	else {
 		return malloc(size);
 	}
+}
+
+void* Engine::MemoryManager::Allocate(size_t size, size_t alignment)
+{
+	uint8_t* p;
+	size += alignment;
+	Allocator* pAlloc = LookUpAllocator(size);
+	if (pAlloc)
+		p = reinterpret_cast<uint8_t*>(pAlloc->Allocate());
+	else
+		p = reinterpret_cast<uint8_t*>(malloc(size));
+
+	p = reinterpret_cast<uint8_t*>(ALIGN(reinterpret_cast<size_t>(p), alignment));
+
+	return static_cast<void*>(p);
 }
 
 void Engine::MemoryManager::Free(void* p, size_t size)
