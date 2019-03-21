@@ -14,24 +14,22 @@ namespace Engine {
 
 	class TestGraphicsManager : public D2DGraphicsManager
 	{
-	public:
-		using D2DGraphicsManager::D2DGraphicsManager;
-		void DrawBitmap(const Image image[], int32_t index);
 	private:
 		ID2D1Bitmap* m_pBitmap = nullptr;
+
+	public:
+		void DrawBitmap(const Image *image, int32_t index);
 	};
 
 	class TestApplication : public WindowsApplication
 	{
-	public:
-		using WindowsApplication::WindowsApplication;
-
-		virtual int Initialize();
-
-		virtual void OnDraw();
-
 	private:
 		Image m_Image[2];
+
+	public:
+		TestApplication(GfxConfiguration& config) : WindowsApplication(config) {};
+		virtual int Initialize();
+		virtual void OnDraw();
 	};
 
 }
@@ -40,8 +38,8 @@ namespace Engine {
 
 	GfxConfiguration config(8, 8, 8, 8, 32, 0, 0, 1024, 512, _T("Texture Load Test (Windows)"));
 	IApplication* g_pApp = static_cast<IApplication*>(new TestApplication(config));
-	GraphicsManager* g_pGraphicsManager = static_cast<GraphicsManager*>(new TestGraphicsManager);
-	MemoryManager* g_pMemoryManager = static_cast<MemoryManager*>(new MemoryManager);
+	GraphicsManager* g_pGraphicsManager = static_cast<GraphicsManager*>(new TestGraphicsManager());
+	MemoryManager* g_pMemoryManager = static_cast<MemoryManager*>(new MemoryManager());
 
 }
 

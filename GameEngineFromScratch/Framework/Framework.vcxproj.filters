@@ -10,6 +10,9 @@
     <Filter Include="Codec">
       <UniqueIdentifier>{93da8d9b-11d1-49ac-b784-fada6ee80fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{ed3439f7-37db-4b00-8305-646a2919436a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\main.cpp">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="Common\utility.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\math.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

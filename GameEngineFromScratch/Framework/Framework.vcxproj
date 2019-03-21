@@ -42,6 +42,7 @@
     <ClInclude Include="Interface\IApplication.h" />
     <ClInclude Include="Interface\IImageParser.h" />
     <ClInclude Include="Interface\IRuntimeModule.h" />
+    <ClInclude Include="Math\math.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
