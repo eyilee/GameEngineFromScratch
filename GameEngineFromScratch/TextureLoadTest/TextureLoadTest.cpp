@@ -1,11 +1,11 @@
 ﻿#include <tchar.h>
 #include <iostream>
-#include "RHI_D2D/D2DGraphicsManager.h"
-#include "Framework/Codec/BmpParser.h"
 #include "Framework/Common/MemoryManager.h"
 #include "Framework/Common/AssetLoader.h"
 #include "Framework/Common/utility.h"
-#include "PlatformWindows/WindowsApplication.h"
+#include "Framework/Parser/BmpParser.h"
+#include "Framework/Platform/WindowsApplication.h"
+#include "Framework/RHI/D2DGraphicsManager.h"
 
 using namespace std;
 using namespace Engine;

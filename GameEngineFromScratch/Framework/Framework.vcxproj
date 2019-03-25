@@ -24,10 +24,12 @@
     <ClCompile Include="Common\BaseApplication.cpp" />
     <ClCompile Include="Common\Buffer.cpp" />
     <ClCompile Include="Common\GraphicsManager.cpp" />
+    <ClCompile Include="Common\Image.cpp" />
     <ClCompile Include="Common\main.cpp" />
     <ClCompile Include="Common\MemoryManager.cpp" />
     <ClCompile Include="Parser\BmpParser.cpp" />
-    <ClCompile Include="Parser\OGEXParser.cpp" />
+    <ClCompile Include="Platform\WindowsApplication.cpp" />
+    <ClCompile Include="RHI\D2DGraphicsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Allocator.h" />
@@ -49,6 +51,8 @@
     <ClInclude Include="Math\math.h" />
     <ClInclude Include="Parser\BmpParser.h" />
     <ClInclude Include="Parser\OGEXParser.h" />
+    <ClInclude Include="Platform\WindowsApplication.h" />
+    <ClInclude Include="RHI\D2DGraphicsManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -104,6 +108,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -129,8 +134,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGEX.lib;OpenDDL.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenGEX.lib;d2d1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

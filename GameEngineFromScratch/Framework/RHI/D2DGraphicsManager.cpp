@@ -1,7 +1,7 @@
 #include <objbase.h>
 #include "D2DGraphicsManager.h"
 #include "Framework/Common/utility.h"
-#include "PlatformWindows/WindowsApplication.h"
+#include "Framework/Platform/WindowsApplication.h"
 
 using namespace Engine;
 

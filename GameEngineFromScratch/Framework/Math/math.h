@@ -183,14 +183,14 @@ namespace Engine {
 		return out;
 	}
 
-	void MulByElement(const float a[], const float b[], float result[], const size_t count)
+	inline void MulByElement(const float a[], const float b[], float result[], const size_t count)
 	{
 		for (size_t index = 0; index < count; index++) {
 			result[index] = a[index] * b[index];
 		}
 	}
 
-	void DotProduct(const float a[], const float b[], float* result, const size_t count) {
+	inline void DotProduct(const float a[], const float b[], float* result, const size_t count) {
 		*result = 0;
 		float* r = new float[count];
 		MulByElement(a, b, r, count);

@@ -2,9 +2,5 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="TextureLoadTest.cpp" />
-    <ClCompile Include="..\PlatformWindows\WindowsApplication.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\PlatformWindows\WindowsApplication.h" />
   </ItemGroup>
 </Project>

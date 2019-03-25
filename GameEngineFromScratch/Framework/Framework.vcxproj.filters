@@ -13,6 +13,12 @@
     <Filter Include="Parser">
       <UniqueIdentifier>{93da8d9b-11d1-49ac-b784-fada6ee80fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{a5f0b541-a948-4eec-801d-a61427537c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RHI">
+      <UniqueIdentifier>{febc0073-1aa3-4a9a-a5aa-16fc1729f20b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\main.cpp">
@@ -39,8 +45,14 @@
     <ClCompile Include="Parser\BmpParser.cpp">
       <Filter>Parser</Filter>
     </ClCompile>
-    <ClCompile Include="Parser\OGEXParser.cpp">
-      <Filter>Parser</Filter>
+    <ClCompile Include="Platform\WindowsApplication.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="RHI\D2DGraphicsManager.cpp">
+      <Filter>RHI</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Image.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="Parser\OGEXParser.h">
       <Filter>Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\WindowsApplication.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="RHI\D2DGraphicsManager.h">
+      <Filter>RHI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

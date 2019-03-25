@@ -1,4 +1,5 @@
 #pragma once
+
 #include <windows.h>
 #include "Framework/Common/BaseApplication.h"
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <unordered_map>
 #include "External/OpenGex/OpenGEX/OpenGEX.h"
 #include "Framework/Common/portable.h"
