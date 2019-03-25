@@ -19,42 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Common\Allocator.cpp" />
-    <ClCompile Include="Common\AssetLoader.cpp" />
-    <ClCompile Include="Common\BaseApplication.cpp" />
-    <ClCompile Include="Common\Buffer.cpp" />
-    <ClCompile Include="Common\GraphicsManager.cpp" />
-    <ClCompile Include="Common\main.cpp" />
-    <ClCompile Include="Common\MemoryManager.cpp" />
-    <ClCompile Include="Parser\BmpParser.cpp" />
-    <ClCompile Include="Parser\OGEXParser.cpp" />
+    <ClCompile Include="OpenGEX.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common\Allocator.h" />
-    <ClInclude Include="Common\AssetLoader.h" />
-    <ClInclude Include="Common\BaseApplication.h" />
-    <ClInclude Include="Common\Buffer.h" />
-    <ClInclude Include="Common\GfxConfiguration.h" />
-    <ClInclude Include="Common\GraphicsManager.h" />
-    <ClInclude Include="Common\Image.h" />
-    <ClInclude Include="Common\MemoryManager.h" />
-    <ClInclude Include="Common\portable.h" />
-    <ClInclude Include="Common\SceneNode.h" />
-    <ClInclude Include="Common\SceneObject.h" />
-    <ClInclude Include="Common\utility.h" />
-    <ClInclude Include="Interface\IApplication.h" />
-    <ClInclude Include="Interface\IImageParser.h" />
-    <ClInclude Include="Interface\IRuntimeModule.h" />
-    <ClInclude Include="Interface\ISceneParser.h" />
-    <ClInclude Include="Math\math.h" />
-    <ClInclude Include="Parser\BmpParser.h" />
-    <ClInclude Include="Parser\OGEXParser.h" />
+    <ClInclude Include="OpenGEX.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CBE95678-4728-464A-8521-75AA1B975800}</ProjectGuid>
+    <ProjectGuid>{1FB42270-5521-4256-9462-41868AAFBBA1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Framework</RootNamespace>
+    <RootNamespace>OpenGEX</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -122,20 +96,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>OpenGEX.lib;OpenDDL.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>../../../Debug/OpenDDL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>

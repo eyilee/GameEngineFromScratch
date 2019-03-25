@@ -1,3 +1,4 @@
+#include <objbase.h>
 #include <cstdio>
 #include "GraphicsManager.h"
 #include "MemoryManager.h"
@@ -14,6 +15,8 @@ namespace Engine {
 }
 
 int main(int argc, char** argv) {
+	CoInitialize(NULL);
+
 	int ret;
 
 	if ((ret = g_pApp->Initialize()) != 0) {
@@ -41,5 +44,6 @@ int main(int argc, char** argv) {
 	g_pMemoryManager->Finalize();
 	g_pApp->Finalize();
 
+	CoUninitialize();
 	return 0;
 }

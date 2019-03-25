@@ -28,6 +28,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RHI_D2D", "RHI_D2D\RHI_D2D.
 		{CBE95678-4728-464A-8521-75AA1B975800} = {CBE95678-4728-464A-8521-75AA1B975800}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{BC156C57-4943-4064-BF9E-6695B4963987}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OgexParserTest", "OgexParserTest\OgexParserTest.vcxproj", "{25915D66-6352-4A9D-8F81-13B76E704128}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CBE95678-4728-464A-8521-75AA1B975800} = {CBE95678-4728-464A-8521-75AA1B975800}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGEX", "External\OpenGex\OpenGEX\OpenGEX.vcxproj", "{1FB42270-5521-4256-9462-41868AAFBBA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745} = {E6ABE76C-C540-4CFB-835C-199EE4C59745}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenDDL", "External\OpenGex\OpenDDL\OpenDDL.vcxproj", "{E6ABE76C-C540-4CFB-835C-199EE4C59745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -84,9 +98,37 @@ Global
 		{7037D828-35E7-4F08-AA85-0B56D450EC6C}.Release|x64.Build.0 = Release|x64
 		{7037D828-35E7-4F08-AA85-0B56D450EC6C}.Release|x86.ActiveCfg = Release|Win32
 		{7037D828-35E7-4F08-AA85-0B56D450EC6C}.Release|x86.Build.0 = Release|Win32
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Debug|x64.ActiveCfg = Debug|x64
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Debug|x64.Build.0 = Debug|x64
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Debug|x86.ActiveCfg = Debug|Win32
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Debug|x86.Build.0 = Debug|Win32
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Release|x64.ActiveCfg = Release|x64
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Release|x64.Build.0 = Release|x64
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Release|x86.ActiveCfg = Release|Win32
+		{25915D66-6352-4A9D-8F81-13B76E704128}.Release|x86.Build.0 = Release|Win32
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Debug|x64.ActiveCfg = Debug|x64
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Debug|x64.Build.0 = Debug|x64
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Debug|x86.ActiveCfg = Debug|Win32
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Debug|x86.Build.0 = Debug|Win32
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Release|x64.ActiveCfg = Release|x64
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Release|x64.Build.0 = Release|x64
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Release|x86.ActiveCfg = Release|Win32
+		{1FB42270-5521-4256-9462-41868AAFBBA1}.Release|x86.Build.0 = Release|Win32
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Debug|x64.ActiveCfg = Debug|x64
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Debug|x64.Build.0 = Debug|x64
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Debug|x86.ActiveCfg = Debug|Win32
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Debug|x86.Build.0 = Debug|Win32
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Release|x64.ActiveCfg = Release|x64
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Release|x64.Build.0 = Release|x64
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Release|x86.ActiveCfg = Release|Win32
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FB42270-5521-4256-9462-41868AAFBBA1} = {BC156C57-4943-4064-BF9E-6695B4963987}
+		{E6ABE76C-C540-4CFB-835C-199EE4C59745} = {BC156C57-4943-4064-BF9E-6695B4963987}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47A8D279-345E-4940-A305-C01258F449EB}
