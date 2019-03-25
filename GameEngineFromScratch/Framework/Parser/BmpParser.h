@@ -6,12 +6,12 @@
 namespace Engine {
 
 #pragma pack(push, 1)
-	typedef struct _BITMAP_FILEHEADER {
+	typedef struct _BITMAP_FILE_HEADER {
 		uint16_t Signature;
 		uint32_t Size;
 		uint32_t Reserved;
 		uint32_t BitsOffset;
-	} BITMAP_FILEHEADER;
+	} BITMAP_FILE_HEADER;
 
 #define BITMAP_FILEHEADER_SIZE 14
 

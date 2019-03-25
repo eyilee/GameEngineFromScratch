@@ -11,11 +11,14 @@ namespace Engine {
 		HWND m_hWnd;
 
 	public:
+		WindowsApplication() = default;
 		WindowsApplication(GfxConfiguration& config) : BaseApplication(config) {};
+		~WindowsApplication() = default;
+
 		virtual int Initialize();
+
 		virtual void Finalize();
 
-		// One cycle of the main loop
 		virtual void Tick();
 
 		inline HWND GetMainWindow() const { return m_hWnd; };

@@ -5,7 +5,7 @@ using namespace Engine;
 Image Engine::BmpParser::Parse(const Buffer& buf)
 {
 	Image img;
-	BITMAP_FILEHEADER* pFileHeader = reinterpret_cast<BITMAP_FILEHEADER*>(buf.m_pData);
+	BITMAP_FILE_HEADER* pFileHeader = reinterpret_cast<BITMAP_FILE_HEADER*>(buf.m_pData);
 	BITMAP_HEADER* pBmpHeader = reinterpret_cast<BITMAP_HEADER*>(buf.m_pData + BITMAP_FILEHEADER_SIZE);
 	if (pFileHeader->Signature == 0x4D42 /* 'B''M' */) {
 		std::cout << "Asset is Windows BMP file" << std::endl;

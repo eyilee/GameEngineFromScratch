@@ -13,12 +13,17 @@ namespace Engine {
 		GfxConfiguration m_Config;
 
 	public:
+		// delete the default construct to enforce a configuration
+		BaseApplication() = delete;
 		BaseApplication(GfxConfiguration& cfg);
+		~BaseApplication() = default;
+
 		virtual int Initialize();
+
 		virtual void Finalize();
 
-		// One cycle of the main loop
 		virtual void Tick();
+
 		virtual bool IsQuit();
 
 		inline GfxConfiguration& GetConfiguration() { return m_Config; };
@@ -27,8 +32,6 @@ namespace Engine {
 		virtual void OnDraw() {};
 
 	private:
-		// hide the default construct to enforce a configuration
-		BaseApplication() {};
 	};
 
 }

@@ -8,6 +8,9 @@ namespace Engine {
 	class IImageParser
 	{
 	public:
+		IImageParser() = default;
+		~IImageParser() = default;
+
 		virtual Image Parse(const Buffer& buf) = 0;
 	};
 
