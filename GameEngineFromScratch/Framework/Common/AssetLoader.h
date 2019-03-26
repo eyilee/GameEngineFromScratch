@@ -70,4 +70,6 @@ namespace Engine {
 		}
 	};
 
+	extern AssetLoader* g_pAssetLoader;
+
 }

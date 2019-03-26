@@ -54,6 +54,13 @@
     <ClCompile Include="Common\Image.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="Common\SceneManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Scene.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\SceneObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\IRuntimeModule.h">
@@ -118,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="RHI\D2DGraphicsManager.h">
       <Filter>RHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\SceneManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Scene.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

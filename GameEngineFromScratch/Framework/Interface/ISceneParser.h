@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include "Framework/Common/Scene.h"
 #include "Framework/Common/SceneNode.h"
 
 namespace Engine {
@@ -12,7 +13,7 @@ namespace Engine {
 		ISceneParser() = default;
 		virtual ~ISceneParser() = default;
 
-		virtual std::unique_ptr<BaseSceneNode> Parse(const std::string& buf) = 0;
+		virtual std::unique_ptr<Scene> Parse(const std::string& buf) = 0;
 	};
 
 }
