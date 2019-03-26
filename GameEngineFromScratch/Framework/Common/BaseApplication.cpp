@@ -1,34 +1,38 @@
 #include <iostream>
 #include "BaseApplication.h"
 
-bool Engine::BaseApplication::m_bQuit = false;
+namespace Engine {
 
-Engine::BaseApplication::BaseApplication(GfxConfiguration& cfg)
-	:m_Config(cfg)
-{
-}
+	bool BaseApplication::m_bQuit = false;
 
-// Parse command line, read configuration, initialize all sub modules
-int Engine::BaseApplication::Initialize()
-{
-	int result = 0;
+	BaseApplication::BaseApplication(GfxConfiguration& cfg)
+		:m_Config(cfg)
+	{
+	}
 
-	std::cout << m_Config;
+	// Parse command line, read configuration, initialize all sub modules
+	int BaseApplication::Initialize()
+	{
+		int result = 0;
 
-	return result;
-}
+		std::cout << m_Config;
 
-// Finalize all sub modules and clean up all runtime temporary files.
-void Engine::BaseApplication::Finalize()
-{
-}
+		return result;
+	}
 
-// One cycle of the main loop
-void Engine::BaseApplication::Tick()
-{
-}
+	// Finalize all sub modules and clean up all runtime temporary files.
+	void BaseApplication::Finalize()
+	{
+	}
 
-bool Engine::BaseApplication::IsQuit()
-{
-	return m_bQuit;
+	// One cycle of the main loop
+	void BaseApplication::Tick()
+	{
+	}
+
+	bool BaseApplication::IsQuit()
+	{
+		return m_bQuit;
+	}
+
 }

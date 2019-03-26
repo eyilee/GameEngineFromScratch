@@ -8,7 +8,7 @@ namespace Engine {
 	{
 	public:
 		IApplication() = default;
-		~IApplication() = default;
+		virtual ~IApplication() = default;
 
 		virtual int Initialize() = 0;
 

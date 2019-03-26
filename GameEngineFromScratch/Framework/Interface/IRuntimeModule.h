@@ -6,7 +6,7 @@ namespace Engine {
 	{
 	public:
 		IRuntimeModule() = default;
-		~IRuntimeModule() = default;
+		virtual ~IRuntimeModule() = default;
 
 		virtual int Initialize() = 0;
 

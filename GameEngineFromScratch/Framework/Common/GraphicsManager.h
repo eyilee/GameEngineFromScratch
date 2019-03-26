@@ -7,9 +7,13 @@ namespace Engine {
 	class GraphicsManager : public IRuntimeModule
 	{
 	public:
-		virtual ~GraphicsManager() {}
+		GraphicsManager() = default;
+		virtual ~GraphicsManager() = default;
+
 		virtual int Initialize();
+
 		virtual void Finalize();
+
 		virtual void Tick();
 	};
 

@@ -1,8 +1,6 @@
 #include <cstdlib>
 #include "MemoryManager.h"
 
-using namespace Engine;
-
 #ifndef ALIGN
 #define ALIGN(x, a) (((x) + ((a) - 1)) & ~((a) - 1))
 #endif
@@ -33,89 +31,93 @@ namespace Engine {
 
 	size_t* MemoryManager::m_pBlockSizeLookup;
 	Allocator* MemoryManager::m_pAllocators;
-}
 
-int Engine::MemoryManager::Initialize()
-{
-	// one-time initialization
-	static bool s_bInitialized = false;
+	int MemoryManager::Initialize()
+	{
+		// one-time initialization
+		static bool s_bInitialized = false;
 
-	if (!s_bInitialized) {
-		// initialize block size lookup table
-		m_pBlockSizeLookup = new size_t[kMaxBlockSize + 1];
-		size_t j = 0;
-		for (size_t i = 0; i <= kMaxBlockSize; i++) {
-			if (i > kBlockSizes[j]) ++j;
-			m_pBlockSizeLookup[i] = j;
+		if (!s_bInitialized) {
+			// initialize block size lookup table
+			m_pBlockSizeLookup = new size_t[kMaxBlockSize + 1];
+			size_t j = 0;
+			for (size_t i = 0; i <= kMaxBlockSize; i++) {
+				if (i > kBlockSizes[j]) {
+					++j;
+				}
+				m_pBlockSizeLookup[i] = j;
+			}
+
+			// initialize the allocators
+			m_pAllocators = new Allocator[kNumBlockSizes];
+			for (size_t i = 0; i < kNumBlockSizes; i++) {
+				m_pAllocators[i].Reset(kBlockSizes[i], kPageSize, kAlignment);
+			}
+
+			s_bInitialized = true;
 		}
 
-		// initialize the allocators
-		m_pAllocators = new Allocator[kNumBlockSizes];
-		for (size_t i = 0; i < kNumBlockSizes; i++) {
-			m_pAllocators[i].Reset(kBlockSizes[i], kPageSize, kAlignment);
+		return 0;
+	}
+
+	void MemoryManager::Finalize()
+	{
+		delete[] m_pAllocators;
+		delete[] m_pBlockSizeLookup;
+	}
+
+	void MemoryManager::Tick()
+	{
+	}
+
+	Allocator* MemoryManager::LookUpAllocator(size_t size)
+	{
+		// check eligibility for lookup
+		if (size <= kMaxBlockSize) {
+			return m_pAllocators + m_pBlockSizeLookup[size];
+		}
+		else {
+			return nullptr;
+		}
+	}
+
+	void* MemoryManager::Allocate(size_t size)
+	{
+		Allocator* pAlloc = LookUpAllocator(size);
+		if (pAlloc) {
+			return pAlloc->Allocate();
+		}
+		else {
+			return malloc(size);
+		}
+	}
+
+	void* MemoryManager::Allocate(size_t size, size_t alignment)
+	{
+		uint8_t* p;
+		size += alignment;
+		Allocator* pAlloc = LookUpAllocator(size);
+		if (pAlloc) {
+			p = reinterpret_cast<uint8_t*>(pAlloc->Allocate());
+		}
+		else {
+			p = reinterpret_cast<uint8_t*>(malloc(size));
 		}
 
-		s_bInitialized = true;
+		p = reinterpret_cast<uint8_t*>(ALIGN(reinterpret_cast<size_t>(p), alignment));
+
+		return static_cast<void*>(p);
 	}
 
-	return 0;
-}
-
-void Engine::MemoryManager::Finalize()
-{
-	delete[] m_pAllocators;
-	delete[] m_pBlockSizeLookup;
-}
-
-void Engine::MemoryManager::Tick()
-{
-}
-
-Allocator* Engine::MemoryManager::LookUpAllocator(size_t size)
-{
-	// check eligibility for lookup
-	if (size <= kMaxBlockSize) {
-		return m_pAllocators + m_pBlockSizeLookup[size];
+	void Engine::MemoryManager::Free(void* p, size_t size)
+	{
+		Allocator* pAlloc = LookUpAllocator(size);
+		if (pAlloc) {
+			pAlloc->Free(p);
+		}
+		else {
+			free(p);
+		}
 	}
-	else {
-		return nullptr;
-	}
+
 }
-
-void* Engine::MemoryManager::Allocate(size_t size)
-{
-	Allocator* pAlloc = LookUpAllocator(size);
-	if (pAlloc) {
-		return pAlloc->Allocate();
-	}
-	else {
-		return malloc(size);
-	}
-}
-
-void* Engine::MemoryManager::Allocate(size_t size, size_t alignment)
-{
-	uint8_t* p;
-	size += alignment;
-	Allocator* pAlloc = LookUpAllocator(size);
-	if (pAlloc)
-		p = reinterpret_cast<uint8_t*>(pAlloc->Allocate());
-	else
-		p = reinterpret_cast<uint8_t*>(malloc(size));
-
-	p = reinterpret_cast<uint8_t*>(ALIGN(reinterpret_cast<size_t>(p), alignment));
-
-	return static_cast<void*>(p);
-}
-
-void Engine::MemoryManager::Free(void* p, size_t size)
-{
-	Allocator* pAlloc = LookUpAllocator(size);
-	if (pAlloc) {
-		pAlloc->Free(p);
-	}
-	else {
-		free(p);
-	}
-}
-

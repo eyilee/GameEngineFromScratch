@@ -10,7 +10,7 @@ namespace Engine {
 	{
 	public:
 		ISceneParser() = default;
-		~ISceneParser() = default;
+		virtual ~ISceneParser() = default;
 
 		virtual std::unique_ptr<BaseSceneNode> Parse(const std::string& buf) = 0;
 	};

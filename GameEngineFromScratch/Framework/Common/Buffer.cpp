@@ -1,71 +1,79 @@
 #include <memory>
 #include "Buffer.h"
 
-using namespace Engine;
+namespace Engine {
 
-Engine::Buffer::Buffer()
-	: m_pData(nullptr)
-	, m_szSize(0)
-	, m_szAlignment(alignof(uint32_t))
-{
-}
-
-Engine::Buffer::Buffer(size_t size, size_t alignment)
-	: m_szSize(size)
-	, m_szAlignment(alignment)
-{
-	m_pData = reinterpret_cast<uint8_t*>(g_pMemoryManager->Allocate(size, alignment));
-}
-
-Engine::Buffer::Buffer(const Buffer& rhs)
-{
-	m_pData = reinterpret_cast<uint8_t*>(g_pMemoryManager->Allocate(rhs.m_szSize, rhs.m_szAlignment));
-	memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
-	m_szSize = rhs.m_szSize;
-	m_szAlignment = rhs.m_szAlignment;
-}
-
-Engine::Buffer::Buffer(Buffer&& rhs)
-{
-	m_pData = rhs.m_pData;
-	m_szSize = rhs.m_szSize;
-	m_szAlignment = rhs.m_szAlignment;
-	rhs.m_pData = nullptr;
-	rhs.m_szSize = 0;
-	rhs.m_szAlignment = 4;
-}
-
-Engine::Buffer::~Buffer()
-{
-	if (m_pData) {
-		g_pMemoryManager->Free(m_pData, m_szSize);
-		m_pData = nullptr;
+	Buffer::Buffer()
+		: m_pData(nullptr)
+		, m_szSize(0)
+		, m_szAlignment(alignof(uint32_t))
+	{
 	}
-}
 
-Buffer& Engine::Buffer::operator = (const Buffer& rhs)
-{
-	if (m_szSize >= rhs.m_szSize && m_szAlignment == rhs.m_szAlignment) {
-		memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
+	Buffer::Buffer(size_t size, size_t alignment)
+		: m_szSize(size)
+		, m_szAlignment(alignment)
+	{
+		m_pData = reinterpret_cast<uint8_t*>(g_pMemoryManager->Allocate(size, alignment));
 	}
-	else {
-		if (m_pData) g_pMemoryManager->Free(m_pData, m_szSize);
+
+	Buffer::Buffer(const Buffer& rhs)
+	{
 		m_pData = reinterpret_cast<uint8_t*>(g_pMemoryManager->Allocate(rhs.m_szSize, rhs.m_szAlignment));
-		memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
+		std::memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
 		m_szSize = rhs.m_szSize;
 		m_szAlignment = rhs.m_szAlignment;
 	}
-	return *this;
-}
 
-Buffer& Engine::Buffer::operator = (Buffer&& rhs)
-{
-	if (m_pData) g_pMemoryManager->Free(m_pData, m_szSize);
-	m_pData = rhs.m_pData;
-	m_szSize = rhs.m_szSize;
-	m_szAlignment = rhs.m_szAlignment;
-	rhs.m_pData = nullptr;
-	rhs.m_szSize = 0;
-	rhs.m_szAlignment = 4;
-	return *this;
+	Buffer::Buffer(Buffer&& rhs)
+	{
+		m_pData = rhs.m_pData;
+		m_szSize = rhs.m_szSize;
+		m_szAlignment = rhs.m_szAlignment;
+		rhs.m_pData = nullptr;
+		rhs.m_szSize = 0;
+		rhs.m_szAlignment = 4;
+	}
+
+	Buffer::~Buffer()
+	{
+		if (m_pData) {
+			g_pMemoryManager->Free(m_pData, m_szSize);
+			m_pData = nullptr;
+		}
+	}
+
+	Buffer& Buffer::operator = (const Buffer& rhs)
+	{
+		if (m_szSize >= rhs.m_szSize && m_szAlignment == rhs.m_szAlignment) {
+			std::memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
+		}
+		else {
+			if (m_pData) {
+				g_pMemoryManager->Free(m_pData, m_szSize);
+			}
+
+			m_pData = reinterpret_cast<uint8_t*>(g_pMemoryManager->Allocate(rhs.m_szSize, rhs.m_szAlignment));
+			std::memcpy(m_pData, rhs.m_pData, rhs.m_szSize);
+			m_szSize = rhs.m_szSize;
+			m_szAlignment = rhs.m_szAlignment;
+		}
+		return *this;
+	}
+
+	Buffer& Buffer::operator = (Buffer&& rhs)
+	{
+		if (m_pData) {
+			g_pMemoryManager->Free(m_pData, m_szSize);
+		}
+
+		m_pData = rhs.m_pData;
+		m_szSize = rhs.m_szSize;
+		m_szAlignment = rhs.m_szAlignment;
+		rhs.m_pData = nullptr;
+		rhs.m_szSize = 0;
+		rhs.m_szAlignment = 4;
+		return *this;
+	}
+
 }

@@ -45,8 +45,11 @@ namespace Engine {
 
 	public:
 		Allocator();
+		Allocator(const Allocator& clone) = delete;
 		Allocator(size_t data_size, size_t page_size, size_t alignment);
 		~Allocator();
+
+		Allocator& operator = (const Allocator& rhs) = delete;
 
 		// resets the allocator to a new configuration
 		void Reset(size_t data_size, size_t page_size, size_t alignment);
@@ -70,10 +73,6 @@ namespace Engine {
 		// fill an allocated block with debug patterns
 		void FillAllocatedBlock(BlockHeader* pBlock);
 #endif
-
-		// disable copy & assignment
-		Allocator(const Allocator& clone) {}
-		Allocator& operator = (const Allocator &rhs) {}
 	};
 
 }
