@@ -16,4 +16,8 @@ namespace Engine {
 	{
 	}
 
+	void GraphicsManager::DrawSingleMesh(const Mesh & mesh)
+	{
+	}
+
 }

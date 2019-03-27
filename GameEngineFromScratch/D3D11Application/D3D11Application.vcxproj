@@ -18,79 +18,35 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Common\Allocator.cpp" />
-    <ClCompile Include="Common\AssetLoader.cpp" />
-    <ClCompile Include="Common\BaseApplication.cpp" />
-    <ClCompile Include="Common\Buffer.cpp" />
-    <ClCompile Include="Common\GraphicsManager.cpp" />
-    <ClCompile Include="Common\Image.cpp" />
-    <ClCompile Include="Common\main.cpp" />
-    <ClCompile Include="Common\MemoryManager.cpp" />
-    <ClCompile Include="Common\Scene.cpp" />
-    <ClCompile Include="Common\SceneManager.cpp" />
-    <ClCompile Include="Common\SceneObject.cpp" />
-    <ClCompile Include="Parser\BmpParser.cpp" />
-    <ClCompile Include="Platform\WindowsApplication.cpp" />
-    <ClCompile Include="RHI\D2DGraphicsManager.cpp" />
-    <ClCompile Include="RHI\D3D11GraphicsManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Common\Allocator.h" />
-    <ClInclude Include="Common\AssetLoader.h" />
-    <ClInclude Include="Common\BaseApplication.h" />
-    <ClInclude Include="Common\Buffer.h" />
-    <ClInclude Include="Common\GfxConfiguration.h" />
-    <ClInclude Include="Common\GraphicsManager.h" />
-    <ClInclude Include="Common\Image.h" />
-    <ClInclude Include="Common\MemoryManager.h" />
-    <ClInclude Include="Common\Mesh.h" />
-    <ClInclude Include="Common\portable.h" />
-    <ClInclude Include="Common\Scene.h" />
-    <ClInclude Include="Common\SceneManager.h" />
-    <ClInclude Include="Common\SceneNode.h" />
-    <ClInclude Include="Common\SceneObject.h" />
-    <ClInclude Include="Common\utility.h" />
-    <ClInclude Include="Interface\IApplication.h" />
-    <ClInclude Include="Interface\IImageParser.h" />
-    <ClInclude Include="Interface\IRuntimeModule.h" />
-    <ClInclude Include="Interface\ISceneParser.h" />
-    <ClInclude Include="Math\math.h" />
-    <ClInclude Include="Parser\BmpParser.h" />
-    <ClInclude Include="Parser\OGEXParser.h" />
-    <ClInclude Include="Platform\WindowsApplication.h" />
-    <ClInclude Include="RHI\D2DGraphicsManager.h" />
-    <ClInclude Include="RHI\D3D11GraphicsManager.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CBE95678-4728-464A-8521-75AA1B975800}</ProjectGuid>
+    <ProjectGuid>{5FD90F50-C0ED-41B8-8D1C-A160FF541BFB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Framework</RootNamespace>
+    <RootNamespace>D3D11Application</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -116,7 +72,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -133,26 +88,24 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-    <Lib>
-      <AdditionalDependencies>OpenGEX.lib;d2d1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;Framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -168,7 +121,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -186,7 +139,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -196,6 +149,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="D3D11Application.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
