@@ -1,0 +1,8 @@
+1. Create the ID3D11Device and ID3D11DeviceContext interfaces using the D3D11CreateDevice function.
+2. Check 4X MSAA quality level support using the ID3D11Device::CheckMultisampleQualityLevels method.
+3. Describe the characteristics of the swap chain we are going to create by filling out an instance of the DXGI_SWAP_CHAIN_DESC structure.
+4. Query the IDXGIFactory instance that was used to create the device, and create an IDXGISwapChain instance.
+5. Create a render target view to the swap chain¡¦s back buffer.
+6. Create the depth/stencil buffer and its associated depth/stencil view.
+7. Bind the render target view and depth/stencil view to the output merger stage of the rendering pipeline so that they can be used by Direct3D.
+8. Set the viewport.
