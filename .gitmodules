@@ -1,0 +1,3 @@
+[submodule "D3D11Sample/FX11"]
+	path = D3D11Sample/FX11
+	url = https://github.com/Microsoft/FX11.git
