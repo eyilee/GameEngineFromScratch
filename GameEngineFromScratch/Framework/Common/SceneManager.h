@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Framework/Math/math.h"
+#include "Framework/Common/Scene.h"
 #include "Framework/Interface/IRuntimeModule.h"
-#include "Framework/Interface/ISceneParser.h"
 
 namespace Engine {
 	class SceneManager : public IRuntimeModule
@@ -26,6 +26,6 @@ namespace Engine {
 		std::unique_ptr<Scene>  m_pScene;
 	};
 
-	extern SceneManager*    g_pSceneManager;
+	extern SceneManager* g_pSceneManager;
 }
 

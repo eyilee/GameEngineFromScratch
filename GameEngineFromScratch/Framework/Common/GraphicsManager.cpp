@@ -4,8 +4,7 @@ namespace Engine {
 
 	int GraphicsManager::Initialize()
 	{
-		int result = 0;
-		return result;
+		return 0;
 	}
 
 	void GraphicsManager::Finalize()
@@ -16,7 +15,11 @@ namespace Engine {
 	{
 	}
 
-	void GraphicsManager::DrawSingleMesh(const Mesh & mesh)
+	void GraphicsManager::Clear()
+	{
+	}
+
+	void GraphicsManager::Draw()
 	{
 	}
 

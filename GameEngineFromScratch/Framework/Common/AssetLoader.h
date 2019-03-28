@@ -9,20 +9,21 @@
 
 namespace Engine {
 
-	typedef void* AssetFilePtr;
-
-	enum struct AssetOpenMode {
-		MY_OPEN_TEXT = 0, /// Open In Text Mode
-		MY_OPEN_BINARY = 1, /// Open In Binary Mode 
-	};
-
-	enum struct AssetSeekBase {
-		MY_SEEK_SET = 0, /// SEEK_SET
-		MY_SEEK_CUR = 1, /// SEEK_CUR
-		MY_SEEK_END = 2  /// SEEK_END
-	};
-
 	class AssetLoader : public IRuntimeModule {
+	public:
+		typedef void* AssetFilePtr;
+
+		enum struct AssetOpenMode {
+			MY_OPEN_TEXT = 0, /// Open In Text Mode
+			MY_OPEN_BINARY = 1, /// Open In Binary Mode 
+		};
+
+		enum struct AssetSeekBase {
+			MY_SEEK_SET = 0, /// SEEK_SET
+			MY_SEEK_CUR = 1, /// SEEK_CUR
+			MY_SEEK_END = 2  /// SEEK_END
+		};
+
 	private:
 		std::vector<std::string> m_strSearchPath;
 

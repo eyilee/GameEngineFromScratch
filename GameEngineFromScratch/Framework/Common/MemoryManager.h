@@ -1,6 +1,5 @@
 #pragma once
 
-#include <new>
 #include "Allocator.h"
 #include "Framework/Interface/IRuntimeModule.h"
 
@@ -45,5 +44,7 @@ namespace Engine {
 	private:
 		static Allocator* LookUpAllocator(size_t size);
 	};
+
+	extern MemoryManager* g_pMemoryManager;
 
 }

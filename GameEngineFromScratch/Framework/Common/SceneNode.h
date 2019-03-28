@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <list>
 #include <memory>
@@ -7,6 +8,7 @@
 #include "SceneObject.h"
 
 namespace Engine {
+
 	class BaseSceneNode {
 	protected:
 		std::string m_strName;
@@ -78,6 +80,7 @@ namespace Engine {
 	};
 
 	typedef BaseSceneNode SceneEmptyNode;
+
 	class SceneGeometryNode : public SceneNode<SceneObjectGeometry>
 	{
 	protected:

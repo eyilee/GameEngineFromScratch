@@ -3,7 +3,6 @@
 #include <memory>
 #include <string>
 #include "Framework/Common/Scene.h"
-#include "Framework/Common/SceneNode.h"
 
 namespace Engine {
 

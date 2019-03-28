@@ -44,8 +44,6 @@
     <ClInclude Include="Common\GraphicsManager.h" />
     <ClInclude Include="Common\Image.h" />
     <ClInclude Include="Common\MemoryManager.h" />
-    <ClInclude Include="Common\Mesh.h" />
-    <ClInclude Include="Common\portable.h" />
     <ClInclude Include="Common\Scene.h" />
     <ClInclude Include="Common\SceneManager.h" />
     <ClInclude Include="Common\SceneNode.h" />

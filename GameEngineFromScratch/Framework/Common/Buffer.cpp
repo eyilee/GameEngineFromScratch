@@ -58,6 +58,7 @@ namespace Engine {
 			m_szSize = rhs.m_szSize;
 			m_szAlignment = rhs.m_szAlignment;
 		}
+
 		return *this;
 	}
 
@@ -73,6 +74,7 @@ namespace Engine {
 		rhs.m_pData = nullptr;
 		rhs.m_szSize = 0;
 		rhs.m_szAlignment = 4;
+
 		return *this;
 	}
 

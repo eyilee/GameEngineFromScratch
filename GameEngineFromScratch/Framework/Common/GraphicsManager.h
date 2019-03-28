@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Framework/Interface/IRuntimeModule.h"
-#include "Mesh.h"
 
 namespace Engine {
 
@@ -17,7 +16,11 @@ namespace Engine {
 
 		virtual void Tick();
 
-		void DrawSingleMesh(const Mesh& mesh);
+		virtual void Clear();
+
+		virtual void Draw();
 	};
+
+	extern GraphicsManager* g_pGraphicsManager;
 
 }

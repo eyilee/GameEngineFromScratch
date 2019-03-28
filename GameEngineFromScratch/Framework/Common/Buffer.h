@@ -1,11 +1,8 @@
 #pragma once
 
-#include <cstddef>
 #include "MemoryManager.h"
 
 namespace Engine {
-
-	extern MemoryManager* g_pMemoryManager;
 
 	class Buffer {
 	public:

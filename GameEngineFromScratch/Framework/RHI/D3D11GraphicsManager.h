@@ -29,8 +29,6 @@ namespace Engine {
 
 		virtual void Tick();
 
-		virtual void DrawSingleMesh(const Mesh& mesh);
-
 	private:
 		void CreateRenderTarget();
 		void SetViewPort();

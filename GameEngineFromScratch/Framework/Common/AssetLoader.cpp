@@ -58,7 +58,7 @@ namespace Engine {
 		return false;
 	}
 
-	AssetFilePtr AssetLoader::OpenFile(const char* name, AssetOpenMode mode)
+	AssetLoader::AssetFilePtr AssetLoader::OpenFile(const char* name, AssetOpenMode mode)
 	{
 		FILE *fp = nullptr;
 		// loop N times up the hierarchy, testing at each level

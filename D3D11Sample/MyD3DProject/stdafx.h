@@ -20,3 +20,6 @@
 
 // 在此參考您的程式所需的其他標頭
 #include <d3d11.h>
+#include <dxgi.h>
+#include <DirectXMath.h>
+#include "d3dx11effect.h"

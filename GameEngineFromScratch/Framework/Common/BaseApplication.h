@@ -1,19 +1,20 @@
 #pragma once
 
-#include "GfxConfiguration.h"
+#include "AssetLoader.h"
 #include "Framework/Interface/IApplication.h"
+#include "GraphicsManager.h"
+#include "MemoryManager.h"
+#include "SceneManager.h"
 
 namespace Engine {
 
 	class BaseApplication : public IApplication
 	{
 	protected:
-		// Flag if need quit the main loop of the application
 		static bool m_bQuit;
 		GfxConfiguration m_Config;
 
 	public:
-		// delete the default construct to enforce a configuration
 		BaseApplication() = delete;
 		BaseApplication(GfxConfiguration& cfg);
 		virtual ~BaseApplication() = default;

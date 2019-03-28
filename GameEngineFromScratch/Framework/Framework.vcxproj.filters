@@ -60,9 +60,11 @@
     <ClCompile Include="Common\Scene.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Common\SceneObject.cpp" />
     <ClCompile Include="RHI\D3D11GraphicsManager.cpp">
       <Filter>RHI</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\SceneObject.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,9 +113,6 @@
     <ClInclude Include="Common\SceneObject.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="Common\portable.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="Interface\ISceneParser.h">
       <Filter>Interface</Filter>
     </ClInclude>
@@ -137,9 +136,6 @@
     </ClInclude>
     <ClInclude Include="RHI\D3D11GraphicsManager.h">
       <Filter>RHI</Filter>
-    </ClInclude>
-    <ClInclude Include="Common\Mesh.h">
-      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

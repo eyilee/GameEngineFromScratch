@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "MyD3DProject.h"
 
+using namespace DirectX;
+
 #define MAX_LOADSTRING 100
 
 // 全域變數:
@@ -31,6 +33,20 @@ inline void SafeRelease(T **ppInterfaceToRelease)
 		(*ppInterfaceToRelease) = nullptr;
 	}
 }
+
+struct Vertex1
+{
+	XMFLOAT3 Pos;
+	XMFLOAT4 Color;
+};
+
+struct Vertex2
+{
+	XMFLOAT3 Pos;
+	XMFLOAT3 Normal;
+	XMFLOAT2 Tex0;
+	XMFLOAT2 Tex1;
+};
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -276,6 +292,89 @@ HRESULT CreateGraphicsResources() {
 		g_pD3D11DeviceContext->OMGetRenderTargets(1, &g_pD3D11RenderTargetView, &g_pD3D11DepthStencilView);
 
 		SetViewport();
+		g_pD3D11DeviceContext->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		D3D11_INPUT_ELEMENT_DESC desc1[] = {
+			{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}
+		};
+
+		D3D11_INPUT_ELEMENT_DESC desc2[] = {
+			{"POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{"NORMAL", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 24, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{"TEXCOORD", 1, DXGI_FORMAT_R32G32_FLOAT, 0, 32, D3D11_INPUT_PER_VERTEX_DATA, 0}
+		};
+
+		ID3DX11Effect* D3DX11Effect;
+		ID3DX11EffectTechnique* D3DX11EffectTechnique;
+		ID3D11InputLayout* g_pD3D11InputLayout;
+
+		D3DX11EffectTechnique = D3DX11Effect->GetTechniqueByName("Tech");
+		D3DX11_PASS_DESC pd;
+		D3DX11EffectTechnique->GetPassByIndex(0)->GetDesc(&pd);
+		g_pD3D11Device->CreateInputLayout(desc1, 2, pd.pIAInputSignature, pd.IAInputSignatureSize, &g_pD3D11InputLayout);
+		g_pD3D11DeviceContext->IASetInputLayout(g_pD3D11InputLayout);
+
+		Vertex1 vertices[] = {
+			{ XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(-1.0f, +1.0f, -1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(+1.0f, +1.0f, -1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(+1.0f, -1.0f, -1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(-1.0f, -1.0f, +1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(-1.0f, +1.0f, +1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(+1.0f, +1.0f, +1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+			{ XMFLOAT3(+1.0f, -1.0f, +1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) }
+		};
+
+		D3D11_BUFFER_DESC bd;
+
+		ZeroMemory(&bd, sizeof(bd));
+
+		bd.Usage = D3D11_USAGE_IMMUTABLE;
+		bd.ByteWidth = sizeof(Vertex1) * 8;
+		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bd.CPUAccessFlags = 0;
+		bd.MiscFlags = 0;
+		bd.StructureByteStride = 0;
+
+		D3D11_SUBRESOURCE_DATA sd;
+		sd.pSysMem = vertices;
+		ID3D11Buffer* D3D11Buffer;
+		g_pD3D11Device->CreateBuffer(&bd, &sd, &D3D11Buffer);
+
+		UINT stride = sizeof(Vertex1);
+		UINT offset = 0;
+		g_pD3D11DeviceContext->IASetVertexBuffers(0, 1, &D3D11Buffer, &stride, &offset);
+
+			/* ...draw objects using vertex buffer 1... */
+
+		UINT indices[24] = {
+			0, 1, 2, // Triangle 0
+			0, 2, 3, // Triangle 1
+			0, 3, 4, // Triangle 2
+			0, 4, 5, // Triangle 3
+			0, 5, 6, // Triangle 4
+			0, 6, 7, // Triangle 5
+			0, 7, 8, // Triangle 6
+			0, 8, 1 // Triangle 7
+		};
+
+		D3D11_BUFFER_DESC ibd;
+		ibd.Usage = D3D11_USAGE_IMMUTABLE;
+		ibd.ByteWidth = sizeof(UINT) * 24;
+		ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		ibd.CPUAccessFlags = 0;
+		ibd.MiscFlags = 0;
+		ibd.StructureByteStride = 0;
+
+		D3D11_SUBRESOURCE_DATA iinitData;
+		iinitData.pSysMem = indices;
+
+		ID3D11Buffer* mIB;
+		g_pD3D11Device->CreateBuffer(&ibd, &iinitData, &mIB);
+		g_pD3D11DeviceContext->IASetIndexBuffer(mIB, DXGI_FORMAT_R32_UINT, 0);
+		g_pD3D11DeviceContext->DrawIndexed(8, 0, 0);
 	}
 
 	return hr;

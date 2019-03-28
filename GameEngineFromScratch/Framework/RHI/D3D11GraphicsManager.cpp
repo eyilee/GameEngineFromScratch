@@ -27,10 +27,6 @@ namespace Engine {
 	{
 	}
 
-	void D3D11GraphicsManager::DrawSingleMesh(const Mesh & mesh)
-	{
-	}
-
 	void D3D11GraphicsManager::CreateRenderTarget() {
 		HRESULT hr;
 		ID3D11Texture2D *pBackBuffer;
